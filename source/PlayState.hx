@@ -204,7 +204,7 @@ class PlayState extends FlxUIState
 		\nCTRL - Fullscreen
 		\nHold Shift to Move 2x faster
 		\n
-		\nCheck \"Presets.txt\" for a list of Preset Shader Settings!\n".split('\n');
+		\nCheck the itch.io description for a list of Preset Shader Settings!\n".split('\n');
 		#end
 
 		for (i in 0...tipTextArray.length - 1)
