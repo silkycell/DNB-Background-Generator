@@ -41,6 +41,7 @@ class PlayState extends FlxUIState
 	var camHUD:FlxCamera;
 
 	var camFollow:FlxObject; // still never get why i have to do this
+	var github:FlxSprite;
 
 	var settings:FlxUITabMenu;
 
@@ -211,6 +212,14 @@ class PlayState extends FlxUIState
 			add(tipText);
 		}
 
+		github = new FlxSprite().loadGraphic("assets/images/github.png");
+		github.setGraphicSize(Std.int(50));
+		github.updateHitbox();
+		github.antialiasing = true;
+		github.y = FlxG.height - github.width - 5;
+		github.x = 5;
+		add(github);
+
 		BitmapData.loadFromFile('assets/images/DefaultBG.png').onComplete(function(bitmapData)
 		{
 			showImage(bitmapData);
@@ -250,6 +259,22 @@ class PlayState extends FlxUIState
 		// Little fading effect for the scale text
 		if (scaleNotif.alpha > 0)
 			scaleNotif.alpha -= 0.03;
+
+		if (FlxG.mouse.overlaps(github))
+		{
+			github.alpha = 1;
+			github.scale.x = (FlxMath.lerp(github.scale.x, 0.12, 0.1));
+			github.scale.y = (FlxMath.lerp(github.scale.y, 0.12, 0.1));
+
+			if (FlxG.mouse.justPressed)
+				FlxG.openURL("https://github.com/FoxelTheFennic/DNB-Background-Generator");
+		}
+		else
+		{
+			github.alpha = 0.5;
+			github.scale.x = (FlxMath.lerp(github.scale.x, 0.098, 0.1));
+			github.scale.y = (FlxMath.lerp(github.scale.y, 0.098, 0.1));
+		}
 
 		super.update(elapsed);
 	}
