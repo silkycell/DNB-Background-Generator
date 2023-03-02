@@ -1,0 +1,24 @@
+Base D&B:
+	Kabunga:
+		waveAmp: 0.03
+		waveFreq: 5
+		waveSpd: 1
+
+Golden Apple:
+	Applecore BG (Normal): 
+		waveAmp: 0.1
+		waveFreq: 1
+		waveSpd: 2
+
+	Applecore BG (Destroyed) (this is the preset most mods use btw): 
+		waveAmp: 0.1
+		waveFreq: 5
+		waveSpd: 2
+	
+	Applecore BG (Expunged): 
+		waveAmp: 0.25
+		waveFreq: 10
+		waveSpd: 3
+		
+
+If you have any other recommendations, feel free to dm them to me on twitter! (@FoxeltheFennic)
