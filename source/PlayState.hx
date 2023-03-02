@@ -240,7 +240,7 @@ class PlayState extends FlxUIState
 			camBG.zoom += (FlxG.mouse.wheel / 35) / ZOOM_FACTOR;
 		#else
 		if (FlxG.mouse.wheel != 0)
-			camBG.zoom += (FlxG.mouse.wheel / 15) / ZOOM_FACTOR;
+			camBG.zoom += (FlxG.mouse.wheel / 2) / ZOOM_FACTOR;
 		#end
 		#else
 		if (FlxG.mouse.wheel != 0)
