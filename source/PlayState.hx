@@ -190,6 +190,14 @@ class PlayState extends FlxUIState
 
 		// Tooltip
 
+		#if web
+		var tipTextArray:Array<String> = "Scroll - Camera Zoom In/Out
+		\nWASD/Arrow Keys - Move Camera
+		\nSpace - Hide UI
+		\nHold Shift to Move 2x faster
+		\n
+		\nCheck the itch.io description for a list of Preset Shader Settings!\n".split('\n');
+		#else
 		var tipTextArray:Array<String> = "Scroll - Camera Zoom In/Out
 		\nWASD/Arrow Keys - Move Camera
 		\nSpace - Hide UI
@@ -197,6 +205,7 @@ class PlayState extends FlxUIState
 		\nHold Shift to Move 2x faster
 		\n
 		\nCheck \"Presets.txt\" for a list of Preset Shader Settings!\n".split('\n');
+		#end
 
 		for (i in 0...tipTextArray.length - 1)
 		{
@@ -225,8 +234,16 @@ class PlayState extends FlxUIState
 	{
 		backgroundShader.shader.uTime.value[0] += elapsed;
 
+		#if web
+		if (FlxG.mouse.wheel != 0)
+			camBG.zoom += (FlxG.mouse.wheel / 50) / ZOOM_FACTOR;
+		#else
 		if (FlxG.mouse.wheel != 0)
 			camBG.zoom += FlxG.mouse.wheel / ZOOM_FACTOR;
+		#end
+
+		if (camBG.zoom < 0)
+			camBG.zoom = 0;
 
 		var moveAmount = 1;
 
@@ -248,8 +265,10 @@ class PlayState extends FlxUIState
 			FlxG.mouse.visible = !FlxG.mouse.visible;
 		}
 
+		#if !web
 		if (FlxG.keys.justPressed.CONTROL)
 			FlxG.fullscreen = !FlxG.fullscreen;
+		#end
 
 		if (FlxG.mouse.overlaps(github))
 		{
