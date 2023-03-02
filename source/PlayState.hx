@@ -50,7 +50,6 @@ class PlayState extends FlxUIState
 	var chosenImage:FlxSprite;
 	var _displayWidth:Float;
 	var _displayHeight:Float;
-	var scaleNotif:FlxText;
 
 	var backgroundShader:GlitchEffect;
 
@@ -104,10 +103,6 @@ class PlayState extends FlxUIState
 		tooltipText = new FlxText(loadButton.width + 15, 4, Std.int(FlxG.width - (loadButton.width + 15) - 5), "Click the button to load a PNG or JPG!");
 		tooltipText.setFormat("assets/fonts/comic.ttf", 16, FlxColor.WHITE, LEFT);
 		add(tooltipText);
-
-		scaleNotif = new FlxText(FlxG.width - 100, FlxG.height - 20, 100, 100);
-		scaleNotif.setFormat("assets/fonts/comic.ttf", 16, FlxColor.WHITE, RIGHT);
-		add(scaleNotif);
 
 		var tabs = [
 			{name: 'Shader Settings', label: 'Shader Settings'},
@@ -256,10 +251,6 @@ class PlayState extends FlxUIState
 		if (FlxG.keys.justPressed.CONTROL)
 			FlxG.fullscreen = !FlxG.fullscreen;
 
-		// Little fading effect for the scale text
-		if (scaleNotif.alpha > 0)
-			scaleNotif.alpha -= 0.03;
-
 		if (FlxG.mouse.overlaps(github))
 		{
 			github.alpha = 1;
@@ -313,8 +304,6 @@ class PlayState extends FlxUIState
 			newScale.y = chosenImage.scale.y;
 
 		chosenImage.scale.set(newScale.x, newScale.y);
-		scaleNotif.text = "x" + FlxMath.roundDecimal(chosenImage.scale.x, 2);
-		scaleNotif.alpha = 1;
 		centerImage();
 		newScale.put();
 	}
