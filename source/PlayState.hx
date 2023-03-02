@@ -235,8 +235,13 @@ class PlayState extends FlxUIState
 		backgroundShader.shader.uTime.value[0] += elapsed;
 
 		#if web
+		#if debug
 		if (FlxG.mouse.wheel != 0)
-			camBG.zoom += (FlxG.mouse.wheel / 50) / ZOOM_FACTOR;
+			camBG.zoom += (FlxG.mouse.wheel / 35) / ZOOM_FACTOR;
+		#else
+		if (FlxG.mouse.wheel != 0)
+			camBG.zoom += (FlxG.mouse.wheel / 15) / ZOOM_FACTOR;
+		#end
 		#else
 		if (FlxG.mouse.wheel != 0)
 			camBG.zoom += FlxG.mouse.wheel / ZOOM_FACTOR;
